@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Tester\Assert;
-use Tester\Value;
+use Tester\Expect;
 use Tracy\Dumper;
 
 
@@ -46,7 +46,7 @@ Assert::match(
 Assert::equal([
 	1 => [
 		'name' => 'stdClass',
-		'hash' => Value::match('%h%'),
+		'hash' => Expect::match('%h%'),
 		'editor' => null,
 		'items' => [
 			['a', 456, 0],

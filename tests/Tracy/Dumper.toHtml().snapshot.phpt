@@ -7,7 +7,7 @@
 declare(strict_types=1);
 
 use Tester\Assert;
-use Tester\Value;
+use Tester\Expect;
 use Tracy\Dumper;
 
 
@@ -57,8 +57,8 @@ Assert::match(
 	Dumper::toHtml(new stdClass, $options) // different object
 );
 Assert::equal([
-	1 => ['name' => 'stdClass', 'hash' => Value::match('%h%'), 'editor' => null, 'items' => []],
-	2 => ['name' => 'stdClass', 'hash' => Value::match('%h%'), 'editor' => null, 'items' => []],
+	1 => ['name' => 'stdClass', 'hash' => Expect::match('%h%'), 'editor' => null, 'items' => []],
+	2 => ['name' => 'stdClass', 'hash' => Expect::match('%h%'), 'editor' => null, 'items' => []],
 ], formatSnapshot($snapshot));
 
 
@@ -94,7 +94,7 @@ Assert::match(
 Assert::equal([
 	1 => [
 		'name' => 'Test',
-		'hash' => Value::match('%h%'),
+		'hash' => Expect::match('%h%'),
 		'editor' => null,
 		'items' => [
 			['x', [[0, 10], [1, null]], 0],
@@ -116,11 +116,11 @@ in file %a% on line %d%" data-tracy-href="editor://open/?file=%a%&amp;line=%d%&a
 Assert::equal([
 	1 => [
 		'name' => 'Test',
-		'hash' => Value::match('%h%'),
+		'hash' => Expect::match('%h%'),
 		'editor' => [
 			'file' => __DIR__ . DIRECTORY_SEPARATOR . 'fixtures' . DIRECTORY_SEPARATOR . 'DumpClass.php',
-			'line' => Value::type('int'),
-			'url' => Value::type('string'),
+			'line' => Expect::type('int'),
+			'url' => Expect::type('string'),
 		],
 		'items' => [
 			['x', [[0, 10], [1, null]], 0],
